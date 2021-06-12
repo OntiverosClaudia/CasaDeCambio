@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Para poner imagenes en select-->
+    <link rel="stylesheet" href="/css/chosen.css">
+    <link rel="stylesheet" href="css/ImageSelect.css">
+    <!-- / -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/be16e9431e.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/img/icon.png">
+    <title><%- Titulo %></title>
+</head>
+
+<body>
+    <!-- Menu -->
+    <header>
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+            <a class="navbar-brand">
+                Divisas Galgos</a>
+            <!-- Menu Hamburguesa -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Hamburguesa"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Hamburguesa">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#Calculadora">Tipo de cambio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CompraVenta">Compra/Venta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Reportes">Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Main content-->
+    <%-  defineContent ('micss')   %>
+    <main>
+        <div class="arriba">
+            <h1 style="color: #333;">Hora actual:</h1>
+            <span class="clock"></span>
+        </div>
+        <div class="container">
+            <br><br><br>
+            <%- body %>
+        </div>
+    </main>
+    <br><br><br>
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid p-4">
+            <div class="row">
+                <div class="col-lg-1 col-md-12 mb-2 mb-md-0"></div>
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <!-- Direccion -->
+                    <h3 class="text-uppercase">Dirección</h3>
+                    <div class="text-center">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1180.7500334096364!2d-116.98793142780315!3d32.529729608913975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d94875d6e6b3d5%3A0x12c528793fc3f572!2sInstituto%20Tecnol%C3%B3gico%20de%20Tijuana!5e0!3m2!1ses!2smx!4v1622251804945!5m2!1ses!2smx"
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <p align="justify">
+                        Instituto Tecnológico de Tijuana Calzada Del Tecnológico S/N,
+                        Fraccionamiento Tomas Aquino. Tijuana, Baja California. C.P. 22414
+                    </p>
+                </div>
+                <div class="col-lg-1 col-md-12 mb-4 mb-md-0"></div>
+                <div class="col-lg-5 col-md-12 mb-2 mb-md-0" id="Contacto">
+                    <!-- Contacto -->
+                    <h3 class="text-uppercase mb-4" id="Contacto">Contacto</h3>
+                    <p align="justify">Envíanos un email a <strong><a href="mailto:divisasgalgos@tectijuana.edu.mx"
+                                style="text-decoration: none; color:#212529;">divisasgalgos@tectijuana.edu.com</a></strong>
+                        para recibir informes sobre pagos internacionales entre empresas. <br> En caso que desee
+                        información como persona natural agradecemos dirigirse a <strong> <a href=""
+                                style="text-decoration: none; color:#212529;">divisasgalgos.com</a></strong>.</p>
+                    <!-- Redes: OC -->
+                    <a href="https://github.com/OntiverosClaudia" target="_blank" class="flex-column"
+                        style="align-items: center; text-decoration: none; color:#212529;"><i
+                            class="fab fa-github-square"
+                            style="color: #333; font-size: 25px; border-radius: 5px; padding: 1px;"></i> Ontiveros
+                        Claudia</a>
+                    <br><br><br>
+                    <!-- Redes: Iconos -->
+                    <h3 class="text-uppercase pt-4 mb-4">Nuestras redes</h3>
+                    <a href="https://www.facebook.com/TecNMTijuana" target="_blank" class="flex-column"><i
+                            class="fab fa-facebook-square"
+                            style="color: #333; font-size: 25px; border-radius: 5px; padding: 1px;"></i></a>
+                    <a href="https://www.instagram.com/TECNMTijuana/?fbclid=IwAR2CgMEyIge1H8c96ZU-fqhePAQIkcOpNDMEhsiYqOGNKdANJ-2tRwNS6Tc"
+                        target="_blank" class="flex-column"><i class=" fab fa-instagram-square"
+                            style="color: #333; font-size: 25px; border-radius: 5px; padding: 4px;"></i></a>
+                    <a href="https://www.youtube.com/TECNMTijuana" target="_blank" class="flex-column"><i
+                            class=" fab fa-youtube"
+                            style="color: #333; font-size: 25px; border-radius: 5px; padding: 1px;"></i></a>
+                    <a href="https://twitter.com/TECNMTijuana?fbclid=IwAR1fMwmczWN3S19Rc7kwc3aa-71SQ7NCp_Gz5CaeauTH-QuClrN3f74Dg-k"
+                        target="_blank" class="flex-column"><i class=" fab fa-twitter-square"
+                            style="color: #333; font-size: 25px; border-radius: 5px; padding: 2px;"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="Copyright  p-4 Degradado2">
+            <p class="txtCr text-center ">
+                © 2021 <strong>Casa de Divisas Galgos.</strong> Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+    <!-- /Footer -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/clock.js"></script>
+    <!-- Para poner imagenes en select-->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/chosen.jquery.js"></script>
+    <script src="js/ImageSelect.jquery.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

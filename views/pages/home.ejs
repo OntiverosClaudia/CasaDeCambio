@@ -1,0 +1,130 @@
+<!-- Contenido: Formulario : style="background-color: #333;" -->
+<div class="container">
+    <div class="card text-white TipoRedondo Degradado">
+        <div class="card-body">
+            <h3 id="Calculadora">Tipo de cambio</h3>
+            <p>Prueba nuestra calculadora de cambio.</p>
+            <form>
+                <!-- Fila 1 -->
+                <div class="form-row">
+                    <!-- En lugar de columna es una fila :c -->
+                    <!-- Cantidad ingresada por el usuario -->
+                    <div class="col-md-2 pb-4">
+                        <label for="nombre"></label>
+                        <input type="number" class="form-control" placeholder="Cantidad ($)" min="1" step="0.01"
+                            name="cantidad" id="cantidad">
+                    </div>
+                    <!-- Primer select -->
+                    <div class="col-md-4 pb-4">
+                        <label></label>
+                        <select class="my-select" name="select1" id="select1" onchange="ICambioS(this.value)">
+                            <option selected="selected" data-img-src="/img/estadosunidos.png" value="USD">$ USD -
+                                Dólar estadounidense
+                            </option>
+                            <option data-img-src="/img/mexico.png" value="MXN">$ MXN - Peso mexicano</option>
+                        </select>
+                    </div>
+                    <!-- Icon -->
+                    <div class="col-md-1 pb-4">
+                        <label style="color: transparent">Soytextoderelleno</label>
+                        <i class="fas fa-arrow-circle-right"
+                            style="color: #fff; font-size: 35px; border-radius: 5px;"></i>
+                    </div>
+                    <!-- Segundo select -->
+                    <div class=" col-md-4 pb-4">
+                        <label></label>
+                        <div class="row modify justify-content-center" id="DivMXN">
+                            <div class="col-md-7"><img src="/img/mexico.png" alt="" width="20px" height="18px"
+                                    class="pr-1">$ MXN - Peso mexicano</div>
+                        </div>
+                        <div class="row modify justify-content-center" style="display: none;" id="DivUSD">
+                            <div class="col-md-7"><img src="/img/estadosunidos.png" alt="" width="20px" height="18px"
+                                    class="pr-1">$ USD - Dólar estadounidense</div>
+                        </div>
+                    </div>
+                    <!-- Boton -->
+                    <div class="col-md-1 pb-4">
+                        <label></label>
+                        <button type="button" class="btn btn-light text-dark TipoRedondo"
+                            onclick="return Mostrar();">Calcular</button>
+                    </div>
+                </div>
+            </form>
+            <!-- /Elementos form. Calculadora -->
+            <div id="Oculto">
+                <div class="form-row">
+                    <!-- Primer texto -->
+                    <div class="col-md-3 pb-4">
+                        <h4 class="ValorDe"></h4>
+                        <p class="ml-2" id="Pmoneda1"></p>
+                    </div>
+                    <!-- Icon -->
+                    <div class="col-md-1 pb-4">
+                        <i class="fas fa-arrow-right"
+                            style="color: #fff; font-size: 20px; border-radius: 5px; align-items: center;"></i>
+                    </div>
+                    <!-- Segundo texto -->
+                    <div class=" col-md-3 pb-4">
+                        <h4 class="ValorA"></h4>
+                        <p class="ml-2" id="Pmoneda2"></p>
+                    </div>
+                    <!-- Conversion -->
+                    <div class="col-md-5 pb-4">
+                        <h4>1 USD = 19.903 MXN</h4>
+                        <p>1 MXN = 0.0502 USD</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Texto Alerta legal -->
+            <p align="justify" class="pt-4"><small>Las tarifas que muestran nuestro convertidor de monedas gratuito, no
+                    son de "compra" ni "venta", sino tarifas interbancarias. Por lo tanto, estas tarifas se informan
+                    solo con fines orientativos.</small>
+            </p>
+        </div>
+    </div>
+    <!-- /Div contenedor de calculadora -->
+</div>
+<!-- Ontiveros Claudia. Dasokume-->
+<script>
+    var Resultado = 0;
+
+    function Mostrar() {
+        var cantidad = document.getElementById("cantidad").value;
+        var select1 = document.getElementById("select1").value;
+        var primermoneda = document.getElementsByClassName("ValorDe");
+        var segundamoneda = document.getElementsByClassName("ValorA");
+
+        if (cantidad === null || cantidad === '') {
+            document.getElementById('Oculto').style.display = 'none';
+            cantidad = "";
+            return false;
+        } else {
+            if (select1 === 'MXN') {
+                Resultado = (cantidad / 19.903).toFixed(2);
+                segundamoneda.value = '$' + Resultado;
+                $('h4.ValorA').text(segundamoneda.value);
+                $('#Pmoneda1').text('$ MXN - Peso mexicano');
+                $('#Pmoneda2').text('$ USD - Dólar estadounidense');
+            } else {
+                Resultado = (cantidad * 19.903).toFixed(2);
+                segundamoneda.value = '$' + Resultado;
+                $('h4.ValorA').text(segundamoneda.value);
+                $('#Pmoneda1').text('$ USD - Dólar estadounidense');
+                $('#Pmoneda2').text('$ MXN - Peso mexicano');
+            }
+            document.getElementById('Oculto').style.display = 'block';
+            primermoneda.value = '$' + cantidad;
+            $('h4.ValorDe').text(primermoneda.value);
+        }
+    }
+
+    function ICambioS(value) {
+        if (value === 'MXN') {
+            $('#DivUSD').show();
+            $('#DivMXN').hide();
+        } else {
+            $('#DivUSD').hide();
+            $('#DivMXN').show();
+        }
+    }
+</script>

@@ -1,2 +1,4 @@
-# CasaDeCambio
-Programa en NodeJS que simula el funcionamiento de una casa de cambio.
+## :moyai: Simulador de casa de cambio :moyai:
+
+
+Utilizar con sabiduría.

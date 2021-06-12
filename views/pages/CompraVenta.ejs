@@ -1,0 +1,203 @@
+<!-- Contenido: Compra y venta -->
+<div class="container" style="background-color: #fff;">
+    <div class="card TipoRedondo Degradado text-white">
+        <div class="card-body">
+            <h3 style="color: rgb(189, 189, 189);">Casa de cambio</h3>
+            <div class="form-row">
+                <div class="col-md-6 pb-4">
+                    <h3 class="pt-3">Compra</h3>
+                    <h4><img src="/img/estadosunidos.png" width="30px" height="30px"> $ 1 USD = <img
+                            src="/img/mexico.png" width="30px" height="30px"> $ 18.41 MXN</h4>
+                </div>
+                <div class="col-md-6 pb-4">
+                    <h3 class="pt-3">Venta</h3>
+                    <h4><img src="/img/estadosunidos.png" width="30px" height="30px"> $ 1 USD = <img
+                            src="/img/mexico.png" width="30px" height="30px"> $ 19.97 MXN</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Formulario en menu tabs -->
+    <br><br><br>
+    <div class="card TipoRedondo">
+        <div class=" card-body">
+            <h6 align="justify">Seleccione la transacción a realizar.</h6>
+            <br>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#MCompra">Compra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#MVenta">Venta</a>
+                </li>
+            </ul>
+            <!-- Contenido tabs -->
+            <!-- Menu de compra -->
+            <div class="tab-content">
+                <div id="MCompra" class="container tab-pane active"><br>
+                    <h3>Compra</h3>
+                    <div class="form-row pt-4">
+                        <div class="col-md-4 pb-4">
+                            <label>Cantidad de compra (Dlls):</label>
+                            <input type="number" class="form-control"
+                                placeholder="Cantidad ($) que nos vende el cliente" min="1" step="0.01" id="Compra">
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <label>Cantidad de pago (Dlls):</label>
+                            <input type="number" class="form-control"
+                                placeholder="Cantidad ($) que nos entrega el cliente" min="1" step="0.01"
+                                id="pagoCompra">
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <label style="color: #fff;">Textoderellenotextoderellenotextoderelleno</label>
+                            <button type="button" class="btn text-white TipoRedondo"
+                                style="width: 140px; background-color: #1d3a69 ;"
+                                onclick="return MostrarCompra();">Comprar</button>
+                        </div>
+                    </div>
+                    <!-- Div oculto de compra -->
+                    <div style="display: none;" id="OcultoCompra">
+                        <div class="form-row pt-4">
+                            <div class="col-md-4 pb-4">
+                                <label>Total cliente (Pesos):</label><!-- El cliente recibe -->
+                                <p id="TCD"></p>
+                            </div>
+                            <div class="col-md-4 pb-4">
+                                <label>Cambio cliente (Dlls):</label><!-- Cambio del cliente -->
+                                <p id="CCD"></p>
+                            </div>
+                            <div class="col-md-4 pb-4">
+                                <label style="color: #fff;">Textoderellenotextoderellenotextoderelleno</label>
+                                <button type="button" class="btn text-white TipoRedondo"
+                                    style="width: 140px; background-color: #1d3a69 ;"
+                                    onclick="return MostrarTicket1();">Continuar</button>
+                                <!-- Ver ticket -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Div oculto de compra -->
+                    <!-- Div oculto de ticket compra -->
+                    <div id="OcultoTicket1" align="center" style="display: none;">
+                        <div class="card mt-4 mb-4" style="width: 50%;">
+                            <h4 class="mt-4">Divisas Galgos</h4>
+                            <h6 class="pt-1">Ticket de Compra</h6>
+                            <hr width="68%;" style="margin: auto;">
+                            <div class="card-body" align="justify">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-9 EspacioP">
+                                        <p>Folio: 000117</p>
+                                        <p>Caja: 1</p>
+                                        <p id="IdFechaC">sdfuhusdghdug</p>
+                                        <p id="IdHoraC"></p>
+                                        <hr width="100%;" style="margin: auto;"> <br>
+                                        <p id="IdPagoC"></p>
+                                        <p id="IdTotalC"></p>
+                                        <p id="IdCambioC"></p>
+                                        <p id="IdRecibeC"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="CompraVenta" method="POST">
+                            <input type="number" class="form-control" min="1" step="0.01" style="display: none;"
+                                id="ADC" name="DolarActual">
+                            <input type="number" class="form-control" min="1" step="0.01" style="display: none;"
+                                id="APC" name="PesoActual">
+                            <input type="text" class="form-control" style="display: none;" name="Transaccion"
+                                value="Compra">
+                            <button type="submit" class="btn text-white TipoRedondo"
+                                style="width: 140px; background-color: #1d3a69;"
+                                onclick="return LimpiarCompra();">Finalizar</button>
+                        </form>
+                    </div>
+                    <!-- /Div oculto de ticket compra -->
+                </div>
+                <!-- Menu de venta -->
+                <div id="MVenta" class="container tab-pane fade"><br>
+                    <h3>Venta</h3>
+                    <div class="form-row pt-4">
+                        <div class="col-md-4 pb-4">
+                            <label for="nombre">Cantidad de venta (Pesos):</label>
+                            <input type="number" class="form-control"
+                                placeholder="Cantidad ($) que nos compra el cliente" min="1" step="0.01" id="Venta">
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <label for="nombre">Cantidad de pago (Pesos):</label>
+                            <input type="number" class="form-control"
+                                placeholder="Cantidad ($) que nos entrega el cliente" min="1" step="0.01"
+                                id="pagoVenta">
+                        </div>
+                        <div class="col-md-4 pb-4">
+                            <label style="color: #fff;">Textoderellenotextoderellenotextoderelleno</label>
+                            <button type="button" class="btn text-white TipoRedondo"
+                                style="width: 140px; background-color: #1d3a69 ;"
+                                onclick="return MostrarVenta();">Vender</button>
+                        </div>
+                    </div>
+                    <!-- Div oculto de venta -->
+                    <div style="display: none;" id="OcultoVenta">
+                        <div class="form-row pt-4">
+                            <div class="col-md-4 pb-4">
+                                <label for="nombre">Total cliente (Dlls):</label>
+                                <!-- El cliente recibe -->
+                                <p id="TVD"></p>
+                            </div>
+                            <div class="col-md-4 pb-4">
+                                <label for="nombre">Cambio cliente (Pesos):</label>
+                                <!-- Cambio del cliente -->
+                                <p id="CVD"></p>
+                            </div>
+                            <div class="col-md-4 pb-4">
+                                <label style="color: #fff;">Textoderellenotextoderellenotextoderelleno</label>
+                                <button type="button" class="btn text-white TipoRedondo"
+                                    style="width: 140px; background-color: #1d3a69;"
+                                    onclick="return MostrarTicket2();">Continuar</button>
+                                <!-- Ver ticket -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Div oculto de venta -->
+                    <!-- Div oculto de ticket venta -->
+                    <div id="OcultoTicket2" align="center" style="display: none;">
+                        <div class="card mt-4 mb-4" style="width: 50%;">
+                            <h4 class="mt-4">Divisas Galgos</h4>
+                            <h6 class="pt-1">Ticket de Venta</h6>
+                            <hr width="68%;" style="margin: auto;">
+                            <div class="card-body" align="justify">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-9 EspacioP">
+                                        <p>Folio: 000117</p>
+                                        <p>Caja: 1</p>
+                                        <p id="IdFechaV">sdfuhusdghdug</p>
+                                        <p id="IdHoraV"></p>
+                                        <hr width="100%;" style="margin: auto;"> <br>
+                                        <p id="IdPagoV"></p>
+                                        <p id="IdTotalV"></p>
+                                        <p id="IdCambioV"></p>
+                                        <p id="IdRecibeV"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="CompraVenta" method="POST">
+                            <input type="number" class="form-control" min="1" step="0.01" style="display: none;"
+                                id="ADV" name="DolarActual">
+                            <input type="number" class="form-control" min="1" step="0.01" style="display: none;"
+                                id="APV" name="PesoActual">
+                            <input type="text" class="form-control" style="display: none;" name="Transaccion"
+                                value="Venta">
+                            <button type="submit" class="btn text-white TipoRedondo"
+                                style="width: 140px; background-color: #1d3a69;"
+                                onclick="return LimpiarVenta();">Finalizar</button>
+                        </form>
+                    </div>
+                    <!-- /Div oculto de ticket venta -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Fin formulario tabs -->
+</div>
+<script src="/js/funcion.js"></script>
